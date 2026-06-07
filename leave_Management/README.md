@@ -15,7 +15,7 @@ Install PHP Dependencies
 6. php artisan key:generate
    Configure Database
 
-Update the following values in .env: 9.
+Update the following values in .env:
 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
