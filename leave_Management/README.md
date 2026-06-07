@@ -1,59 +1,271 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Installation Commands
+Install PHP Dependencies
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+1. composer install
+   Install Frontend Dependencies
+2. npm install
+   Authentication Scaffolding (Laravel UI)
+   3.composer require laravel/ui
+   4.php artisan ui bootstrap --auth
+3. npm install
+4. npm run build
+   Create Environment File
+5. cp .env.example .env
+   Generate Application Key
+6. php artisan key:generate
+   Configure Database
 
-## About Laravel
+Update the following values in .env: 9.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=leave_management
+DB_USERNAME=root
+DB_PASSWORD=
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Run Migrations and Seeders 10. php artisan migrate:fresh --seed
+Start Development Server 11. php artisan serve
+Compile Frontend Assets
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Development:
 
-## Learning Laravel
+12. npm run dev
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Production:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+13. npm run build
 
-## Laravel Sponsors
+# Test User Credentials
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+After running:
 
-### Premium Partners
+```bash
+php artisan migrate:fresh --seed
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+the following demo accounts will be available.
 
-## Contributing
+## Administrator Account
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+| Field    | Value            |
+| -------- | ---------------- |
+| Email    | [admin@test.com] |
+| Password | password         |
+| Role     | Administrator    |
 
-## Code of Conduct
+Permissions:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- User Management
+- Leave Configuration
+- Reports
+- Audit Logs
+- Dashboard Monitoring
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Manager Account 1
 
-## License
+| Field    | Value               |
+| -------- | ------------------- |
+| Email    | [manager1@test.com] |
+| Password | password            |
+| Role     | Manager             |
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Permissions:
+
+- Review Leave Requests
+- Approve Leave Requests
+- Reject Leave Requests
+- Dashboard Monitoring
+
+---
+
+## Manager Account 2
+
+| Field    | Value               |
+| -------- | ------------------- |
+| Email    | [manager2@test.com] |
+| Password | password            |
+| Role     | Manager             |
+
+Permissions:
+
+- Review Leave Requests
+- Approve Leave Requests
+- Reject Leave Requests
+- Dashboard Monitoring
+
+---
+
+## Employee Account
+
+| Field    | Value               |
+| -------- | ------------------- |
+| Email    | [employee@test.com] |
+| Password | password            |
+| Role     | Employee            |
+
+Permissions:
+
+- Apply for Leave
+- View Leave History
+- View Leave Balance
+- Dashboard Access
+
+---
+
+## Additional Seeded Users
+
+The database seeder also generates:
+
+- 20 additional employee accounts using Laravel Factories
+- Random departments (IT, HR, Finance)
+- Random designations
+- Manager assignments
+- Leave balances
+
+These accounts can be used for testing search, reporting, approval workflows, and dashboard statistics.
+
+# Assumptions Made During Development
+
+1. Each employee is assigned to exactly one manager.
+
+2. A manager can supervise multiple employees.
+
+3. Employee accounts are created and managed by the Administrator.
+
+4. Leave balances are automatically allocated when a new employee is created.
+
+5. Leave balances are reduced only after a leave request is approved.
+
+6. Rejected leave requests do not affect leave balances.
+
+7. Employees cannot submit overlapping leave requests for the same period.
+
+8. Leave duration is calculated inclusively between the selected start date and end date.
+
+    Example:
+    - Start Date: 01-Jun-2026
+    - End Date: 03-Jun-2026
+    - Total Leave Days: 3
+
+9. Public holidays and weekends are not excluded from leave calculations.
+
+10. Manager approval is considered the final approval step.
+
+11. Multi-level approval workflows are outside the scope of this implementation.
+
+12. Employees can view only their own leave records.
+
+13. Managers can view only leave requests assigned to them.
+
+14. Administrators have access to all users, leave requests, reports, and audit logs.
+
+15. User accounts are not permanently deleted; users can be marked as Active or Inactive.
+
+16. Approved leave requests cannot be modified by employees.
+
+17. Leave requests are created with a default status of "Pending".
+
+18. Email notifications and SMS notifications are outside the scope of this assessment.
+
+19. The application is intended for demonstration and assessment purposes and does not include enterprise features such as Single Sign-On (SSO), Multi-Factor Authentication (MFA), or external HR integrations.
+
+20. AJAX functionality is implemented for search, filtering, leave submission, and approval workflows to improve user experience without requiring full page refreshes.
+
+# Application Modules
+
+## Authentication
+
+| Route   | Description |
+| ------- | ----------- |
+| /login  | User Login  |
+| /logout | User Logout |
+
+---
+
+## Employee Module
+
+| Route                  | Description          |
+| ---------------------- | -------------------- |
+| /employee/leave        | View Leave History   |
+| /employee/leave/create | Apply Leave          |
+| POST /employee/leave   | Submit Leave Request |
+
+Features:
+
+- Apply Leave
+- View Leave History
+- View Leave Balance
+- Leave Filtering
+
+---
+
+## Manager Module
+
+| Route                            | Description                  |
+| -------------------------------- | ---------------------------- |
+| /manager/dashboard               | Manager Dashboard            |
+| /manager/leave-requests          | View Assigned Leave Requests |
+| POST /manager/leave/{id}/approve | Approve Leave Request        |
+| POST /manager/leave/{id}/reject  | Reject Leave Request         |
+
+Features:
+
+- Review Leave Requests
+- Approve Leave Requests
+- Reject Leave Requests
+- Add Manager Remarks
+
+---
+
+## Administrator Module
+
+### Dashboard
+
+| Route            | Description             |
+| ---------------- | ----------------------- |
+| /admin/dashboard | Administrator Dashboard |
+
+### User Management
+
+| Route                  | Description |
+| ---------------------- | ----------- |
+| /admin/users           | View Users  |
+| /admin/users/create    | Create User |
+| /admin/users/{id}/edit | Edit User   |
+| POST /admin/users      | Store User  |
+| PUT /admin/users/{id}  | Update User |
+
+### Leave Configuration
+
+| Route                        | Description       |
+| ---------------------------- | ----------------- |
+| /admin/leave-types           | View Leave Types  |
+| /admin/leave-types/{id}/edit | Edit Leave Type   |
+| PUT /admin/leave-types/{id}  | Update Leave Type |
+
+### Reports
+
+| Route          | Description        |
+| -------------- | ------------------ |
+| /admin/reports | View Leave Reports |
+
+### Audit Logs
+
+| Route             | Description            |
+| ----------------- | ---------------------- |
+| /admin/audit-logs | View System Audit Logs |
+
+---
+
+## AJAX Endpoints
+
+The following operations are performed using AJAX:
+
+- User Search
+- Report Filtering
+- Leave Application Submission
+- Leave Approval
+- Leave Rejection

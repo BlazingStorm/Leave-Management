@@ -29,6 +29,8 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
+            'role' => 'employee' , 
+            'status' => 'active' , 
             'remember_token' => Str::random(10),
         ];
     }
@@ -40,6 +42,27 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
+        ]);
+    }
+
+    public function admin(): static
+    {
+        return $this->state(fn () => [
+            'role' => 'admin'
+        ]);
+    }
+
+    public function manager(): static
+    {
+        return $this->state(fn () => [
+            'role' => 'manager'
+        ]);
+    }
+    
+    public function employee(): static
+    {
+        return $this->state(fn () => [
+            'role' => 'employee'
         ]);
     }
 }

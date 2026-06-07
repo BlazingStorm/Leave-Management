@@ -22,6 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role' , 
+        'status'
     ];
 
     /**
@@ -46,4 +48,26 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function employee()
+    {
+       return $this->hasOne(Employee::class);
+    }
+
+    public function leaveRequests()
+    {
+       return $this->hasOne(LeaveRequest::class);
+    }
+
+    public function leaveBalances()
+    {
+       return $this->hasMany(LeaveBalance::class);
+    }
+
+    public function approvedLeaves()
+    {
+       return $this->hasMany(LeaveRequest::class , 'manager_id');
+    }
+
+
 }
