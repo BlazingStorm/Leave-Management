@@ -1,18 +1,18 @@
 Installation Commands
-Install PHP Dependencies
+1. Install PHP Dependencies
 
-1. composer install
-   Install Frontend Dependencies
-2. npm install
-   Authentication Scaffolding (Laravel UI)
-3. composer require laravel/ui
-4. php artisan ui bootstrap --auth
-3. npm install
-4. npm run build
-   Create Environment File
-5. cp .env.example .env
-   Generate Application Key
-6. php artisan key:generate
+ composer install
+2. Install Frontend Dependencies
+     npm install
+3.   Authentication Scaffolding (Laravel UI)
+    composer require laravel/ui
+   php artisan ui bootstrap --auth
+ npm install
+ npm run build
+4.   Create Environment File
+ cp .env.example .env
+5.   Generate Application Key
+ php artisan key:generate
 
 
 Configure Database
