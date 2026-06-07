@@ -24,8 +24,10 @@ DB_DATABASE=leave_management
 DB_USERNAME=root
 DB_PASSWORD=
 
-Run Migrations and Seeders 10. php artisan migrate:fresh --seed
-Start Development Server 11. php artisan serve
+Run Migrations and Seeders 
+php artisan migrate:fresh --seed
+Start Development Server 
+php artisan serve
 Compile Frontend Assets
 
 Development:
