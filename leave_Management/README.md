@@ -28,6 +28,7 @@ DB_PASSWORD=
 Run Migrations and Seeders 
 
 php artisan migrate:fresh --seed
+
 Start Development Server 
 
 php artisan serve
