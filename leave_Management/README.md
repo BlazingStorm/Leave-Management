@@ -1,18 +1,37 @@
-Installation Commands
-1. Install PHP Dependencies
-
- composer install
-2. Install Frontend Dependencies
-     npm install
+# Installation Commands
+# Install PHP Dependencies
+```bash
+```
+```bash
+composer install
+```
+ 
+ Install Frontend Dependencies
+ ```bash
+npm install
+```
+     
 3.   Authentication Scaffolding (Laravel UI)
-    composer require laravel/ui
+   ```bash
+ composer require laravel/ui
    php artisan ui bootstrap --auth
+```
+```bash
  npm install
  npm run build
-4.   Create Environment File
- cp .env.example .env
-5.   Generate Application Key
- php artisan key:generate
+```
+ 
+5.   Create Environment File
+
+```bash
+    cp .env.example .env
+```
+ 
+7.   Generate Application Key
+   ```bash
+    php artisan key:generate
+   ```
+ 
 
 
 Configure Database
@@ -26,18 +45,25 @@ DB_USERNAME=root
 DB_PASSWORD=
 
 Run Migrations and Seeders 
-
+```bash
 php artisan migrate:fresh --seed
+```
+
 
 Start Development Server 
 
+```bash
 php artisan serve
+```
+
 
 Compile Frontend Assets
 
 Development:
+```bash
+npm run dev
+```
 
-12. npm run dev
 
 Production:
 
