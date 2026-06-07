@@ -1,3 +1,6 @@
+Screenshots of the project below. Readme of the project inside the folder.
+
+
 <img width="1920" height="1032" alt="admin user control" src="https://github.com/user-attachments/assets/fcf4d9ee-9e0e-4926-b922-61ab10fff63e" />
 
 <img width="1918" height="872" alt="apply leave" src="https://github.com/user-attachments/assets/e1af54c1-95ee-4133-ad94-25be9cf01895" />
