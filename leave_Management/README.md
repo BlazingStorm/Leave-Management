@@ -5,8 +5,8 @@ Install PHP Dependencies
    Install Frontend Dependencies
 2. npm install
    Authentication Scaffolding (Laravel UI)
-   3.composer require laravel/ui
-   4.php artisan ui bootstrap --auth
+   3. composer require laravel/ui
+   4. php artisan ui bootstrap --auth
 3. npm install
 4. npm run build
    Create Environment File
