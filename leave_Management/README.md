@@ -13,8 +13,9 @@ Install PHP Dependencies
 5. cp .env.example .env
    Generate Application Key
 6. php artisan key:generate
-   Configure Database
 
+
+Configure Database
 Update the following values in .env:
 
 DB_CONNECTION=mysql
@@ -25,9 +26,12 @@ DB_USERNAME=root
 DB_PASSWORD=
 
 Run Migrations and Seeders 
+
 php artisan migrate:fresh --seed
 Start Development Server 
+
 php artisan serve
+
 Compile Frontend Assets
 
 Development:
